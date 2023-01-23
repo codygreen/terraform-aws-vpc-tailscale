@@ -2,6 +2,8 @@
 
 Creates an AWS VPC with a Tailscale jumphost.  The  jumphost leverages Tailscale SSH.
 
+![design diagram](./design.png)
+
 ## Terraform Variables
 
 | Variable  | Description  |

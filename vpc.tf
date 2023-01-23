@@ -3,7 +3,7 @@ resource "aws_vpc" "vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
   tags = {
-    Name  = format("%s-nms-vpc", local.owner_name_safe)
+    Name  = format("%s-jumphost-vpc", local.owner_name_safe)
     Owner = var.owner_email
   }
 }
@@ -15,7 +15,7 @@ resource "aws_subnet" "private" {
   cidr_block        = "10.0.1.0/24"
   vpc_id            = aws_vpc.vpc.id
   tags = {
-    Name = format("%s-nms-private", local.owner_name_safe)
+    Name = format("%s-jumphost-private", local.owner_name_safe)
   }
 }
 
@@ -24,7 +24,7 @@ resource "aws_subnet" "public" {
   cidr_block        = "10.0.2.0/24"
   vpc_id            = aws_vpc.vpc.id
   tags = {
-    Name = format("%s-nms-public", local.owner_name_safe)
+    Name = format("%s-jumphost-public", local.owner_name_safe)
   }
 }
 
@@ -45,7 +45,7 @@ resource "aws_nat_gateway" "nat_gateway" {
   allocation_id = aws_eip.nat_gateway.id
   subnet_id     = aws_subnet.public.id
   tags = {
-    "Name" = format("%s-nms-ngw", local.owner_name_safe)
+    "Name" = format("%s-jumphost-ngw", local.owner_name_safe)
     Owner  = var.owner_email
   }
   depends_on = [aws_internet_gateway.gw]

@@ -8,7 +8,6 @@ resource "aws_instance" "jumphost" {
   subnet_id                   = aws_subnet.private.id
   associate_public_ip_address = false
   key_name                    = var.key_name
-  #   iam_instance_profile        = aws_iam_instance_profile.nms_profile.name
 
   user_data = templatefile("${path.module}/user_data/jumphost.tpl", {
     hostname           = random_pet.server.id

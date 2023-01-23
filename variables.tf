@@ -1,8 +1,15 @@
+variable "aws_access_key" {
+  type        = string
+  description = "AWS access key"
+}
+variable "aws_secret_key" {
+  type        = string
+  description = "AWS secret key"
+}
 variable "instance_type" {
   description = "Type of EC2 instance to provision"
   default     = "t3.small"
 }
-
 variable "key_name" {
   description = "AWS EC2 SSH key name"
 }
